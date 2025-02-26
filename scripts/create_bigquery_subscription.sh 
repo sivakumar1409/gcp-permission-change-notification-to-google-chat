@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+. config.sh
+
+
+gcloud config set project ${PROJECT_ID}
+
+
+PUBSUB_SUBSCRIPTION_NAME="permission_change_logs_to_bigquery"
+bigquery_table="$PROJECT_ID.permission_change_monitoring.permission_change_logs"
+
+
+# Check if the subscription exists
+if gcloud pubsub subscriptions describe "$PUBSUB_SUBSCRIPTION_NAME" --project="${PROJECT_ID}" > /dev/null 2>&1; then
+ echo "Subscription $PUBSUB_SUBSCRIPTION_NAME already exists. Deleting it..."
+ gcloud pubsub subscriptions delete "$PUBSUB_SUBSCRIPTION_NAME" --project="${PROJECT_ID}" --quiet
+ echo "Subscription $PUBSUB_SUBSCRIPTION_NAME deleted."
+fi
+
+
+# Create the subscription
+gcloud pubsub subscriptions create "$PUBSUB_SUBSCRIPTION_NAME" \
+   --topic="$PUBSUB_TOPIC_NAME" \
+   --bigquery-table="$bigquery_table" \
+   --project="${PROJECT_ID}"
+
+
+echo "Subscription $PUBSUB_SUBSCRIPTION_NAME created with BigQuery table $bigquery_table."
