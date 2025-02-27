@@ -15,7 +15,7 @@ fi
    --topic="$PUBSUB_TOPIC_NAME" \
    --push-endpoint="https://${REGION}-${PROJECT_ID}.cloudfunctions.net/${HANDLER_GCF_FUNCTION_NAME}" \
    --ack-deadline=10 \
-   --push-auth-service-account="$SERVICE_ACCOUNT" \
+   --push-auth-service-account="$SERVICE_ACCOUNT_EMAIL" \
    --project="$PROJECT_ID"
 
    echo "Subscription $PUBSUB_SUBSCRIPTION_NAME created with push endpoint to Cloud Function $HANDLER_GCF_FUNCTION_NAME."

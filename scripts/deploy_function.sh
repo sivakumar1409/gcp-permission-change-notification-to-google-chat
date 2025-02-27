@@ -22,4 +22,4 @@
 
 
    gcloud functions add-invoker-policy-binding ${HANDLER_GCF_FUNCTION_NAME} \
-   --project=${PROJECT_ID} --region=${REGION} --member=serviceAccount:$SERVICE_ACCOUNT
+   --project=${PROJECT_ID} --region=${REGION} --member=serviceAccount:$SERVICE_ACCOUNT_EMAIL

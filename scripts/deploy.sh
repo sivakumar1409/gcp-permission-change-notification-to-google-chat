@@ -11,6 +11,7 @@ if [ "$1" == "--only-sink" ]; then
  . deploy_sinks.sh
 else
  . enable_apis.sh
+ . create_service_account.sh
  . deploy_function.sh
  . create_pubsub_topic.sh
  . create_subscription.sh
