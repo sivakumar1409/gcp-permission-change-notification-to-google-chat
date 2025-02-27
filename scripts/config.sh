@@ -4,7 +4,7 @@ MONITORED_PROJECT_IDS=()
 REGION=""
 
 #pls don't modify
-SERVICE_ACCOUNT=gcp-permission-change-notification-sa
+SERVICE_ACCOUNT=gcp-perm-chge-not-sa
 PUBSUB_TOPIC_NAME="gcp_permission_change_logs"
 LOG_SINK_NAME="permission_change_logs_to_chat_message"
 PUBSUB_SUBSCRIPTION_NAME="permission_change_logs_to_chat_subscription"
