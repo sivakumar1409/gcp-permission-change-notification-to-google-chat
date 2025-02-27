@@ -20,7 +20,18 @@ https://cloud.google.com/sdk/docs/install
 Run `gcloud auth login`
 
 
-### Step 3: Run the below command
+### Step 3: Modify the config file 
+
+Update the values for the below variables in the scripts/config.sh file.
+
+```aiexclude
+PROJECT_ID= <project-id-where-the-function-will-be-deployed>
+CHAT_WEBHOOK_URL=""
+MONITORED_PROJECT_IDS=('$PROJECT_ID' '<other project ids>') <project-ids-that-are-monitored-for-permission-change>
+REGION="" <region-where-the-function-will-be-deployed>
+```
+
+### Step 4: Run the below command
 `sh scripts/deploy.sh`
 
 
